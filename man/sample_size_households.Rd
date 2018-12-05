@@ -7,8 +7,35 @@
 sample_size_households(sample_size, avg_hh, prop_under_5, frac_6_59,
   non_response_rate = 0)
 }
+\arguments{
+\item{sample_size}{The sample size in terms of children}
+
+\item{avg_hh}{average household size}
+
+\item{prop_under_5}{proportion of children under 5 in the population}
+
+\item{frac_6_59}{fraction of `prop_under_5` between 6 and 59 months of age}
+
+\item{@non_response_rate}{the expected rate of non-response}
+}
 \description{
 Take a sample size of children and convert it to households
+}
+\examples{
+# Assuming 0\% non-response ------------------
+sample_size_households(500,                 # 500 children
+                       avg_hh = 6.2,        # avg household size is 6.2
+                       prop_under_5 = 0.15, # 15\% of children under 5
+                       frac_6_59 = 0.9)     # 90\% of under 5 between 6-59 months
+# Result should be 598 households
+
+# Assuming 8\% non-response ------------------
+sample_size_households(500,                 # 500 children
+                       avg_hh = 6.2,        # avg household size is 6.2
+                       prop_under_5 = 0.15, # 15\% of children under 5
+                       frac_6_59 = 0.9,     # 90\% of under 5 between 6-59 months
+                       non_response_rate = 0.08)
+# Result should be 650 households
 }
 \references{
 Sampling Methods and Sample Size Calculation for the SMART Methodology
